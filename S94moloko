@@ -8,7 +8,7 @@ start() {
     fi
     echo "Starting service..."
     /bin/sh -c 'while true; do
-        METRICS=$(curl -s "http://127.0.0.1/metrics")
+        METRICS=$(curl -s "http://127.0.0.1/metrics/isp")
         if [ -n "$METRICS" ]; then
             ISP_AVELUM=$(echo "$METRICS" | grep "^isp_avelum " | awk "{print \$2}")
             if [ -n "$ISP_AVELUM" ] && echo "$ISP_AVELUM" | grep -q "^[0-9]*\.*[0-9]*$"; then
